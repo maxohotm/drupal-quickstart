@@ -4,5 +4,11 @@
 # before the build step.  This script gets executed directly, so it
 # could be python, php, ruby, etc.
 
+# last version
+#composer global update
 composer global require drush/drush:7.1.0
+
+mv php/* .
+mv php/.gitignore .
+rmdir php
 
