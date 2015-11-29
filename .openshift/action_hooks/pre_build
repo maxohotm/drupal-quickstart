@@ -9,7 +9,7 @@
 php composer global require drush/drush:7.1.0
 #composer global require drush/drush:7.1.0
 
-echo $COMPOSER_HOME
-echo $COMPOSER_BIN_DIR
-echo $COMPOSER_VENDOR_DIR
+#echo $COMPOSER_HOME
+#echo $COMPOSER_BIN_DIR
+#echo $COMPOSER_VENDOR_DIR
 
