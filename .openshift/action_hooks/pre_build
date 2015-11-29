@@ -5,39 +5,42 @@
 # could be python, php, ruby, etc.
 
 
-
 #php/usr/bin/composer self-update
+#composer self-update
+#composer global require drush/drush
+#drush status
 
-composer self-update
-composer global require drush/drush
-drush status
-# last version
-#composer global update
-#php composer global require drush/drush:7.1.0
-#composer global require drush/drush:7.1.0
+install_composer ()
 
-#echo $COMPOSER_HOME
-#echo $COMPOSER_BIN_DIR
-#echo $COMPOSER_VENDOR_DIR
-
-
-
-install composer ()
-
-composer global require drush/drush
+$OPENSHIFT_DATA_DIRcomposer global require drush/drush
 drush status
 
-install composer () { 
+install_composer () { 
+
    export COMPOSER_HOME="$OPENSHIFT_DATA_DIR/.composer"
  
-if [ ! -f "$OPENSHIFT_DATA_DIR/composer.phar" ]; then
-    curl -s https://getcomposer.org/installer | /usr/bin/php -- --install-dir=$OPENSHIFT_DATA_DIR
-else
-    /usr/bin/php $OPENSHIFT_DATA_DIR/composer.phar self-update
-fi
+	if [ ! -f "$OPENSHIFT_DATA_DIR/composer.phar" ]; then
+	    curl -s https://getcomposer.org/installer | /usr/bin/php -- --install-dir=$OPENSHIFT_DATA_DIR
+	else
+	    /usr/bin/php $OPENSHIFT_DATA_DIR/composer.phar self-update
+	fi
 
-unset GIT_DIR  
-/usr/bin/php $OPENSHIFT_DATA_DIR/composer.phar install
+	unset GIT_DIR 
+	cd $OPENSHIFT_REPO_DIR/php  
+	/usr/bin/php $OPENSHIFT_DATA_DIR/composer.phar install
+}
+
+set_env_lib (){
+	if [ -z "$1" ]
+	  then
+	    echo "No argument supplied"
+	    exit 1
+	fi
+	
+	case ":$OPENSHIFT_PHP_LD_LIBRARY_PATH_ELEMENT:" in
+	  *":$1:"*) :;; # already there
+	  *) OPENSHIFT_PHP_LD_LIBRARY_PATH_ELEMENT="$1:$OPENSHIFT_PHP_LD_LIBRARY_PATH_ELEMENT";; # or PATH="$PATH:$new_entry"
+	esac
 }
 
 
