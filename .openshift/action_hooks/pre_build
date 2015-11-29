@@ -39,7 +39,7 @@ set_env_lib (){
 
 install_composer
 
-php $OPENSHIFT_DATA_DIR/composer global require drush/drush
+php $OPENSHIFT_DATA_DIRcomposer global require drush/drush
 drush status
 
 
