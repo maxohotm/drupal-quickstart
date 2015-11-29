@@ -15,7 +15,7 @@ install_composer () {
 	fi
 
 	unset GIT_DIR 
-	cd $OPENSHIFT_REPO_DIR/php  
+	#cd $OPENSHIFT_REPO_DIR/php  
 	/usr/bin/php $OPENSHIFT_DATA_DIR/composer.phar install
 }
 
@@ -39,7 +39,7 @@ set_env_lib (){
 
 install_composer
 
-$COMPOSER_HOME global require drush/drush
+php $OPENSHIFT_DATA_DIR/composer global require drush/drush
 drush status
 
 
