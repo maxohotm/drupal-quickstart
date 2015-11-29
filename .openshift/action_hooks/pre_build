@@ -12,7 +12,7 @@
 
 install_composer ()
 
-${OPENSHIFT_DATA_DIR}composer global require drush/drush
+/usr/bin/php $OPENSHIFT_DATA_DIR/composer.phar global require drush/drush
 drush status
 
 install_composer () { 
