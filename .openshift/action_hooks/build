@@ -15,6 +15,10 @@ then
   exit 5
 fi
 
+#####
+php `find -name build_bootstrap.php`
+
+
 DRUPAL_DIR=${OPENSHIFT_DATA_DIR}drupal
 DRUPAL_SITE_DIR=${OPENSHIFT_DATA_DIR}sites
 

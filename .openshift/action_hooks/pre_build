@@ -8,7 +8,3 @@
 #composer global update
 composer global require drush/drush:7.1.0
 
-mv php/* .
-mv php/.gitignore .
-rmdir php
-
