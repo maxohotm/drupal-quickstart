@@ -4,9 +4,12 @@
 # before the build step.  This script gets executed directly, so it
 # could be python, php, ruby, etc.
 
+
+composer global require drush/drush
+drush status
 # last version
 #composer global update
-php composer global require drush/drush:7.1.0
+#php composer global require drush/drush:7.1.0
 #composer global require drush/drush:7.1.0
 
 #echo $COMPOSER_HOME
