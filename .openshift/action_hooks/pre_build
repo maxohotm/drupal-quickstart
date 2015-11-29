@@ -5,17 +5,12 @@
 # could be python, php, ruby, etc.
 
 
-#php/usr/bin/composer self-update
+export COMPOSER_HOME="$OPENSHIFT_DATA_DIR/.composer"
+ 
+if [ ! -f "$OPENSHIFT_DATA_DIR/composer.phar" ]; then
+    curl -s https://getcomposer.org/installer | /usr/bin/php -- --install-dir=$OPENSHIFT_DATA_DIR
+else
+    /usr/bin/php $OPENSHIFT_DATA_DIR/composer.phar self-update
+fi
 
-composer self-update
-composer global require drush/drush
-drush status
-# last version
-#composer global update
-#php composer global require drush/drush:7.1.0
-#composer global require drush/drush:7.1.0
-
-#echo $COMPOSER_HOME
-#echo $COMPOSER_BIN_DIR
-#echo $COMPOSER_VENDOR_DIR
 
