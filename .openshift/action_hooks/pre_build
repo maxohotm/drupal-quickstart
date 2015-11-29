@@ -5,6 +5,9 @@
 # could be python, php, ruby, etc.
 
 
+#php/usr/bin/composer self-update
+
+composer self-update
 composer global require drush/drush
 drush status
 # last version
