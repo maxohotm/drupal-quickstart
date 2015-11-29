@@ -4,3 +4,5 @@
 # before the build step.  This script gets executed directly, so it
 # could be python, php, ruby, etc.
 
+composer global require drush/drush:7.1.0
+
